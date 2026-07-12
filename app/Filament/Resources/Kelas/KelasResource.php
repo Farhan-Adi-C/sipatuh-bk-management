@@ -21,7 +21,7 @@ class KelasResource extends Resource
 {
     protected static ?string $model = Kelas::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAcademicCap;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBuildingOffice2;
 
     protected static ?string $recordTitleAttribute = 'name';
 

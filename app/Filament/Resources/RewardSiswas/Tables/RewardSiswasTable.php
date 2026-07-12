@@ -32,6 +32,7 @@ class RewardSiswasTable
 
                 TextColumn::make("jenis_reward.poin")
                     ->badge()
+                    ->label("Poin")
                     ->color("success"),
                 TextColumn::make('created_at')
                     ->dateTime()

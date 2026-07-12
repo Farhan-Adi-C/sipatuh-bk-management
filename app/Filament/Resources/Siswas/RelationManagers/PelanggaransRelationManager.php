@@ -48,7 +48,7 @@ class PelanggaransRelationManager extends RelationManager
            ->recordTitleAttribute('jenis_pelanggaran.nama_pelanggaran')
             ->columns([
                 TextColumn::make('jenis_pelanggaran.nama_pelanggaran')
-                    ->label('Jenis Pelanggaran'),
+                    ->label('Nama Pelanggaran'),
 
                 TextColumn::make("jenis_pelanggaran.kategori")
                     ->badge()
@@ -72,13 +72,12 @@ class PelanggaransRelationManager extends RelationManager
                 CreateAction::make()
         ->label('Tambah Pelanggaran Baru') // Label kustom
         ->icon('heroicon-o-plus-circle') // Tambahkan ikon
-        ->modalHeading('Tambah Data Pelanggaran')
+        ->modalHeading('Tambah Pelanggaran Baru')
          ->authorize(true),
             ])
             ->recordActions([
-               EditAction::make(),
+               EditAction::make()->authorize(true),
                DeleteAction::make()
-               
                 ->authorize(true),
             ]);
     }

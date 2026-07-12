@@ -38,14 +38,23 @@ class RewardsRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('siswa_id')
+            ->recordTitleAttribute('nama_reward')
+            ->modifyQueryUsing(function ($query) {
+            return $query->with('jenis_reward');
+        })
             ->columns([
-                TextColumn::make('jenis_reward_id')
+                TextColumn::make('jenis_reward.nama_reward')
+                ->label("Nama Reward")
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('tanggal_reward')
                     ->date()
                     ->sortable(),
+                TextColumn::make("jenis_reward.poin")
+                ->label("Poin")
+                ->badge()
+                ->color("success"),
+                
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -59,13 +68,18 @@ class RewardsRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                CreateAction::make(),
+                CreateAction::make()
+        ->label('Tambah Reward Baru')  
+        ->icon('heroicon-o-plus-circle')
+        ->modalHeading('Tambah Reward Baru')
+         ->authorize(true),
                 AssociateAction::make(),
             ])
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()->authorize(true),
                 DissociateAction::make(),
-                DeleteAction::make(),
+               DeleteAction::make()
+                ->authorize(true),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

@@ -14,6 +14,7 @@ class PelanggaranSiswaForm
         return $schema
             ->components([
                 Select::make('siswa_id')
+                    ->searchable()
                     ->relationship('siswa', 'name')
                     ->required(),
                 Select::make('jenis_pelanggaran_id')

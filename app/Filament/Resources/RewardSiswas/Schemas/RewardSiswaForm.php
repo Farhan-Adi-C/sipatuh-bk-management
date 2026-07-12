@@ -15,6 +15,7 @@ class RewardSiswaForm
         return $schema
             ->components([
                 Select::make('siswa_id')
+                    ->searchable()
                     ->required()
                     ->relationship(name: "siswa", titleAttribute: "name"),
                 Select::make('jenis_reward_id')
