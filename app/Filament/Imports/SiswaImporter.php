@@ -19,22 +19,27 @@ class SiswaImporter extends Importer
             ImportColumn::make('name')
                 ->label('Nama')
                 ->requiredMapping()
-                ->rules(['required', 'max:255']),
+                ->rules(['required', 'max:255'])
+                ->examples(["Budi", "Andi", "Rina"]),
 
             ImportColumn::make('nisn')
                 ->requiredMapping()
-                ->rules(['required', 'numeric', 'digits_between:1,10']),
+                ->rules(['required', 'numeric', 'digits_between:1,10'])
+                ->examples([2026000001, 2026000002, 2026000003]),
 
 
             ImportColumn::make('gender')
                 ->requiredMapping()
-                ->rules(['required', 'in:L,P']),
+                ->rules(['required', 'in:L,P'])
+                ->examples(["L", "L", "P"]),
 
             ImportColumn::make('agama')
-                ->rules(['nullable', 'max:50']),
+                ->rules(['nullable', 'max:50'])
+                ->examples(["Islam", "Islam", "Kristen"]),
             ImportColumn::make('kelas')
                 ->requiredMapping()
                 ->rules(['required', 'max:255'])
+                ->examples(["VII A", "VII B", "VII C"])
                 // Cegah Filament mengisi kolom "kelas" langsung ke model,
                 // karena tabel siswas hanya punya kolom kelas_id.
                 ->fillRecordUsing(function (Siswa $record, string $state) {

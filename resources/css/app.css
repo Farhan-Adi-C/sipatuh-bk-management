@@ -7,3 +7,19 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+/* Background default semua item */
+.fi-sidebar-item .fi-sidebar-item-button {
+    background-color: transparent;
+    border-radius: 0.5rem;
+}
+
+/* Saat di-hover */
+.fi-sidebar-item .fi-sidebar-item-button:hover {
+    background-color: #f1f5f9; /* ganti sesuai warna kamu */
+}
+
+/* Item yang sedang aktif */
+.fi-sidebar-item-active .fi-sidebar-item-button {
+    background-color: #4f46e5;
+    color: #ffffff;
+}

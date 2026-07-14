@@ -15,10 +15,16 @@ class SiswaForm
         return $schema
             ->components([
                 TextInput::make('name')
+                ->label("Nama")
                     ->required(),
                 TextInput::make('nisn')
                     ->required()
-                    ->numeric(),
+                    ->label("NISN")
+                    ->numeric()
+                    ->unique(table:"siswas", column:"nisn")
+                    ->validationMessages([
+        'unique' => 'NISN sudah digunakan siswa lain.',
+    ]),
                 Select::make('kelas_id')
                 ->relationship(
                     name: 'kelas',       // Nama fungsi relasi di model Siswa (public function kelas())

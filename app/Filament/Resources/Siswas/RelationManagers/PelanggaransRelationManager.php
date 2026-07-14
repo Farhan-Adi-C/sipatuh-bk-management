@@ -70,8 +70,8 @@ class PelanggaransRelationManager extends RelationManager
             ])
             ->headerActions([
                 CreateAction::make()
-        ->label('Tambah Pelanggaran Baru') // Label kustom
-        ->icon('heroicon-o-plus-circle') // Tambahkan ikon
+        ->label('Tambah Pelanggaran Baru')  
+        ->icon('heroicon-o-plus-circle') 
         ->modalHeading('Tambah Pelanggaran Baru')
          ->authorize(true),
             ])

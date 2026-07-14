@@ -16,12 +16,11 @@ class MyWidget extends StatsOverviewWidget
         return [
             Stat::make('Total Siswa', Siswa::count())
                 ->icon('heroicon-o-user-group')
-                ->color('primary')
+                ->color('info')
                 ->extraAttributes([
                     'class' => 'shadow-lg rounded-xl transition duration-300 hover:scale-105',
                 ])
-                ->chart([1, 1, 1, 1])
-                ->color("primary"),
+                ->chart([1, 1, 1, 1]),
 
             Stat::make('Total Kelas', Kelas::count())
                 ->icon('heroicon-o-building-office-2')
