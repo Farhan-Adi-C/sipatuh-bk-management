@@ -37,7 +37,7 @@ class KelasTable
                     ViewAction::make(),
                     EditAction::make(),
                     Action::make('exportPdfKelas')
-                    ->label('Export Raport Kelas')
+                    ->label('Unduh Raport Kelas')
                     ->icon('heroicon-o-document-arrow-down')
                     ->color('success')
                     ->action(function (Kelas $record) {

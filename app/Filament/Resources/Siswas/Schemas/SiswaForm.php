@@ -37,7 +37,16 @@ class SiswaForm
                 Select::make('gender')
                     ->options(['L' => 'Laki-laki', 'P' => 'Perempuan'])
                     ->required(),
-                TextInput::make('agama'),
+                Select::make('agama')
+                ->options([
+                    "Islam" => "islam",
+                    "Kristen" => "Kristen",
+                    "Katolik" => "Katolik",
+                    "Hindu" => "Hindu",
+                    "Buddha" => "Buddha",
+                    "Konghucu" => "Konghucu",
+                    "Lainnya" => "Lainnya"
+                ]),
                 Textarea::make('alamat')
                     ->columnSpanFull(),
             ]);
