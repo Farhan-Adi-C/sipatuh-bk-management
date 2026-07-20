@@ -74,6 +74,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->databaseNotifications()
             ->plugin(FilamentUiSwitcherPlugin::make())
-            ->spa();
+            ->spa()
+            ->favicon(asset('favicon.png'));
     }
 }

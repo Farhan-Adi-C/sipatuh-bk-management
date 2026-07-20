@@ -13,10 +13,7 @@
                 </div>
             </div>
             <div class="hidden md:flex items-center gap-3">
-                <span class="inline-flex items-center rounded-full bg-white/80 dark:bg-gray-800/80 px-3 py-1 text-xs font-medium text-primary-700 dark:text-primary-200 border border-white/50 dark:border-gray-700/50 backdrop-blur-sm">
-                    <x-filament::icon name="heroicon-o-check-circle" class="h-4 w-4 mr-1 text-primary-500 dark:text-primary-400" />
-                    Versi 1.0
-                </span>
+               <img width="50" src="{{ asset("smp2.png") }}" alt="">
             </div>
         </div>
         <!-- Garis bawah gradien -->

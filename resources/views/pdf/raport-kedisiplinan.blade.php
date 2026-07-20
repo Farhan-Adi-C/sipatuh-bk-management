@@ -125,7 +125,7 @@
 
     <div class="page">
         <div class="title"><img src="{{ public_path("logo.png") }}" width="200" alt=""></div>
-        <div class="subtitle">Tahun Ajaran {{ $tahunAjaran ?? now()->year . '/' . (now()->year + 1) }}</div>
+        <div class="subtitle">SMP Negeri 3 Tuntang</div>
 
         <table class="identitas">
             <tr>
