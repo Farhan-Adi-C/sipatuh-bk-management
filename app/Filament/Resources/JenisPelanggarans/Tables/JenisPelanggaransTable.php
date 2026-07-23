@@ -11,6 +11,7 @@ use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class JenisPelanggaransTable
 {
@@ -19,6 +20,7 @@ class JenisPelanggaransTable
         return $table
         //   ->heading("Data Jenis Pelanggaran")
         ->description('Total: '.  JenisPelanggaran::count() . ' Jenis Pelanggaran')
+        ->modifyQueryUsing(fn (Builder $query) => $query->withCount('pelanggaran_siswas'))
             ->columns([
                 TextColumn::make('nama_pelanggaran')
                     ->searchable(),
@@ -36,7 +38,13 @@ class JenisPelanggaransTable
                         "Pelanggaran Sedang" => "warning",
                         "Pelanggaran Berat" => "danger",
                         default => "gray"
-                    })
+                    }),
+                    TextColumn::make('pelanggaran_siswas_count')
+                    ->label('Jumlah Kasus')
+                    ->numeric()
+                    ->badge()
+                    ->color('gray')
+                    ->sortable(),
             ])
             ->filters([
                 

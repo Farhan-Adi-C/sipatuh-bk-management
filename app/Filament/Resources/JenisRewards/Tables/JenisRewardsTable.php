@@ -10,6 +10,7 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class JenisRewardsTable
 {
@@ -17,6 +18,7 @@ class JenisRewardsTable
     {
         return $table
         ->description('Total: '.  JenisReward::count() . ' Jenis Reward')
+        ->modifyQueryUsing(fn (Builder $query) => $query->withCount('reward_siswas'))
             ->columns([
                 TextColumn::make('nama_reward')
                     ->searchable(),
@@ -33,6 +35,12 @@ class JenisRewardsTable
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make("reward_siswas_count")
+                    ->label("Jumlah Penerima")
+                    ->numeric()
+                    ->color("gray")
+                    ->sortable()
+                    ->badge()
             ])
             ->filters([
                 //
