@@ -8,6 +8,7 @@ use App\Filament\Resources\Kelas\Pages\ListKelas;
 use App\Filament\Resources\Kelas\Pages\ViewKelas;
 use App\Filament\Resources\Kelas\RelationManagers\SiswasRelationManager;
 use App\Filament\Resources\Kelas\Schemas\KelasForm;
+use App\Filament\Resources\Kelas\Schemas\KelasInfolist;
 use App\Filament\Resources\Kelas\Tables\KelasTable;
 use App\Models\Kelas;
 use BackedEnum;
@@ -45,6 +46,11 @@ class KelasResource extends Resource
         return [
             SiswasRelationManager::class,
         ];
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return KelasInfolist::configure($schema);
     }
 
     public static function getPages(): array

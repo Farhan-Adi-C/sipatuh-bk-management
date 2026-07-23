@@ -7,10 +7,21 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Actions\Action;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
+use Illuminate\Contracts\Support\Htmlable;
+
 
 class ViewKelas extends ViewRecord
 {
     protected static string $resource = KelasResource::class;
+
+  
+    public function getTitle(): string|Htmlable
+    {
+        $record = $this->getRecord();
+
+        return "Detail Kelas {$record->name}";
+        
+    }
 
     protected function getHeaderActions(): array
     {
