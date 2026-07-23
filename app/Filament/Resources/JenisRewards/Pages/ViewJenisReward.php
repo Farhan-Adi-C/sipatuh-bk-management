@@ -12,7 +12,7 @@ class ViewJenisReward extends ViewRecord
     protected static string $resource = JenisRewardResource::class;
 public function getTitle(): string | Htmlable
     {
-        return ''; // Mengembalikan string kosong
+        return 'Detail Jenis Reward';
     }
     protected function getHeaderActions(): array
     {

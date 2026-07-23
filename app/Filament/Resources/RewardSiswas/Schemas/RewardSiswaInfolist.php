@@ -3,6 +3,8 @@
 namespace App\Filament\Resources\RewardSiswas\Schemas;
 
 use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class RewardSiswaInfolist
@@ -11,19 +13,24 @@ class RewardSiswaInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('siswa_id')
-                    ->numeric(),
-                TextEntry::make('jenis_reward_id')
-                    ->numeric(),
-                TextEntry::make('tanggal_reward')
-                    ->date()
-                    ->placeholder('-'),
-                TextEntry::make('created_at')
-                    ->dateTime()
-                    ->placeholder('-'),
-                TextEntry::make('updated_at')
-                    ->dateTime()
-                    ->placeholder('-'),
+                Section::make("Detail Reward Siswa")
+                ->columnSpanFull()
+                ->schema([
+                    Grid::make(2)
+                    ->schema([
+
+                        TextEntry::make('siswa.name')
+                            ->label("Nama Siswa")
+                            ->weight("bold")
+                        ,
+                        TextEntry::make('jenis_reward.nama_reward')
+                            ->label("Jenis Reward"),
+                        TextEntry::make('tanggal_reward')
+                            ->date()
+                            ->placeholder('-'),
+                        
+                    ])
+                ]),
             ]);
     }
 }
