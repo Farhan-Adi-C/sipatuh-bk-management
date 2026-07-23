@@ -26,7 +26,6 @@ class ViewKelas extends ViewRecord
                       $siswas = $record->siswas;
 
                       if ($siswas->isEmpty()) {
-                            // Anda bisa opsional menambahkan notification jika kosong
                             return;
                         }
 

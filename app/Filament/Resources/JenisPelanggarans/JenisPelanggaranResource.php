@@ -5,7 +5,10 @@ namespace App\Filament\Resources\JenisPelanggarans;
 use App\Filament\Resources\JenisPelanggarans\Pages\CreateJenisPelanggaran;
 use App\Filament\Resources\JenisPelanggarans\Pages\EditJenisPelanggaran;
 use App\Filament\Resources\JenisPelanggarans\Pages\ListJenisPelanggarans;
+use App\Filament\Resources\JenisPelanggarans\Pages\ViewJenisPelanggaran;
+use App\Filament\Resources\JenisPelanggarans\RelationManagers\PelanggaranSiswasRelationManager;
 use App\Filament\Resources\JenisPelanggarans\Schemas\JenisPelanggaranForm;
+use App\Filament\Resources\JenisPelanggarans\Schemas\JenisPelanggaranInfolist;
 use App\Filament\Resources\JenisPelanggarans\Tables\JenisPelanggaransTable;
 use App\Models\JenisPelanggaran;
 use BackedEnum;
@@ -40,9 +43,15 @@ class JenisPelanggaranResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            PelanggaranSiswasRelationManager::class,
         ];
     }
+
+       public static function infolist(Schema $schema): Schema
+    {
+        return JenisPelanggaranInfolist::configure($schema);
+    }
+
 
     public static function getPages(): array
     {
@@ -50,6 +59,8 @@ class JenisPelanggaranResource extends Resource
             'index' => ListJenisPelanggarans::route('/'),
             'create' => CreateJenisPelanggaran::route('/create'),
             'edit' => EditJenisPelanggaran::route('/{record}/edit'),
+            'view' => ViewJenisPelanggaran::route("/{record}")
+            
         ];
     }
 }
