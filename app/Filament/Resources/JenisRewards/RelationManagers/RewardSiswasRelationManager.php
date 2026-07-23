@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\JenisPelanggarans\RelationManagers;
+namespace App\Filament\Resources\JenisRewards\RelationManagers;
 
 use Filament\Actions\AssociateAction;
 use Filament\Actions\BulkActionGroup;
@@ -13,28 +13,27 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class PelanggaranSiswasRelationManager extends RelationManager
+class RewardSiswasRelationManager extends RelationManager
 {
-    protected static string $relationship = 'pelanggaran_siswas';
-
-    protected static ?string $title = 'Daftar Pelanggaran Siswa';
-
+    protected static string $relationship = 'reward_siswas';
+    protected static ?string $title = "Daftar Reward Siswa";
 
     public function form(Schema $schema): Schema
     {
         return $schema
             ->components([
                 Select::make('siswa_id')
-                    ->relationship('siswa', 'name')
                     ->required()
+                     ->relationship('siswa', 'name')
                     ->searchable(),
-                DatePicker::make('tanggal_pelanggaran'),
+                DatePicker::make('tanggal_reward'),
             ]);
     }
 
@@ -42,9 +41,9 @@ class PelanggaranSiswasRelationManager extends RelationManager
     {
         return $schema
             ->components([
-                TextEntry::make('siswa.name')
-                    ->label('Siswa'),
-                TextEntry::make('tanggal_pelanggaran')
+                TextEntry::make('siswa_id')
+                    ->numeric(),
+                TextEntry::make('tanggal_reward')
                     ->date()
                     ->placeholder('-'),
                 TextEntry::make('created_at')
@@ -62,12 +61,12 @@ class PelanggaranSiswasRelationManager extends RelationManager
             ->recordTitleAttribute('siswa.name')
             ->columns([
                 TextColumn::make('siswa.name')
-                    ->searchable(),
-                TextColumn::make('tanggal_pelanggaran')
+                    ->label("Nama Siswa")
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('tanggal_reward')
                     ->date()
                     ->sortable(),
-                
-
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -81,7 +80,7 @@ class PelanggaranSiswasRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                CreateAction::make(),
+                CreateAction::make()->authorize(true),
                 AssociateAction::make(),
             ])
             ->recordActions([

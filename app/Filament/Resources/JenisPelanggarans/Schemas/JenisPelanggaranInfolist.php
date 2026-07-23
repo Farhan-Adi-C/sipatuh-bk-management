@@ -20,7 +20,8 @@ class JenisPelanggaranInfolist
                         Grid::make(2)
                             ->schema([
                                 TextEntry::make('nama_pelanggaran')
-                                    ->label('Nama Pelanggaran'),
+                                    ->label('Nama Pelanggaran')
+                                    ->weight("bold"),
 
                                 TextEntry::make('poin')
                                     ->label('Poin')

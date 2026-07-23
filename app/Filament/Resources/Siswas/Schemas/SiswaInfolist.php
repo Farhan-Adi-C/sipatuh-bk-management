@@ -20,7 +20,8 @@ class SiswaInfolist
                         Grid::make(2)
                             ->schema([
                                 TextEntry::make('name')
-                                    ->label('Nama'),
+                                    ->label('Nama')
+                                    ->weight("bold"),
 
                                  TextEntry::make('kelas.name')
                                     ->label('Kelas')
@@ -28,8 +29,10 @@ class SiswaInfolist
                                     ->placeholder('Belum ada kelas'),
 
                                 TextEntry::make('nisn')
-                                    ->label('NISN'),
-
+                                    ->label('NISN')
+                                    ->copyable()
+                                    ->copyMessage('Copied!')
+                                    ->copyMessageDuration(1500),
                                 TextEntry::make('gender')
                                     ->label('Jenis Kelamin')
                                     ->badge()

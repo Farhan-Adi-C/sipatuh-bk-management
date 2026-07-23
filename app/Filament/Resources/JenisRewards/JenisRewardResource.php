@@ -6,6 +6,7 @@ use App\Filament\Resources\JenisRewards\Pages\CreateJenisReward;
 use App\Filament\Resources\JenisRewards\Pages\EditJenisReward;
 use App\Filament\Resources\JenisRewards\Pages\ListJenisRewards;
 use App\Filament\Resources\JenisRewards\Pages\ViewJenisReward;
+use App\Filament\Resources\JenisRewards\RelationManagers\RewardSiswasRelationManager;
 use App\Filament\Resources\JenisRewards\Schemas\JenisRewardForm;
 use App\Filament\Resources\JenisRewards\Schemas\JenisRewardInfolist;
 use App\Filament\Resources\JenisRewards\Tables\JenisRewardsTable;
@@ -49,7 +50,7 @@ class JenisRewardResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RewardSiswasRelationManager::class,
         ];
     }
 
