@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\JenisRewards\Tables;
 
+use App\Models\JenisReward;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -15,6 +16,7 @@ class JenisRewardsTable
     public static function configure(Table $table): Table
     {
         return $table
+        ->description('Total: '.  JenisReward::count() . ' Jenis Reward')
             ->columns([
                 TextColumn::make('nama_reward')
                     ->searchable(),

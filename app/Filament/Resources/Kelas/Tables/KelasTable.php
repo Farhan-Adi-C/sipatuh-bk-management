@@ -18,6 +18,8 @@ class KelasTable
     public static function configure(Table $table): Table
     {
         return $table
+        ->heading("Data Kelas")
+        ->description('Total: '.  Kelas::count() . ' Kelas')
             ->columns([
                 TextColumn::make('name')
                     ->searchable()

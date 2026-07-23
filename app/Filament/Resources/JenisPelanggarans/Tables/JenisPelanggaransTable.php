@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\JenisPelanggarans\Tables;
 
+use App\Models\JenisPelanggaran;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -16,6 +17,8 @@ class JenisPelanggaransTable
     public static function configure(Table $table): Table
     {
         return $table
+        //   ->heading("Data Jenis Pelanggaran")
+        ->description('Total: '.  JenisPelanggaran::count() . ' Jenis Pelanggaran')
             ->columns([
                 TextColumn::make('nama_pelanggaran')
                     ->searchable(),
