@@ -83,10 +83,15 @@ class SiswasRelationManager extends RelationManager
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('nisn')
-                    ->numeric()
                     ->sortable(),
                 TextColumn::make('gender')
-                    ->badge(),
+                    ->badge()
+                    ->color(fn(string $state): string => $state === 'L' ? 'info' : 'danger')
+                    ->formatStateUsing(fn(?string $state): ?string => match ($state) {
+                        "L" => "Laki-laki",
+                        "P" => "Perempuan",
+                        default => $state
+                    }),
                 TextColumn::make('agama')
                     ->searchable(),
 
